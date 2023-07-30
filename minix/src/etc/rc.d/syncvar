@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# PROVIDE: syncvar
+# REQUIRE: SERVERS
+
+$_rc_subr_loaded . /etc/rc.subr
+
+name="syncvar"
+rcvar=$name
+start_cmd="minix-service -cn up /service/${name}"
+stop_cmd="minix-service down ${name}"
+
+load_rc_config $name
+run_rc_command "$1"
